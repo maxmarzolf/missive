@@ -1,0 +1,32 @@
+# Missive
+# Flask app with an endpoint at /sms (or any other single endpoint) to handle Twilio texts
+    > Handle incoming text messages:
+        - + 1h Get cheese from Wegmans [123-123-1234;123-123-1235]
+        - + 06032020:0830 Take car to the shop [me]
+        - ? 05032020 <list all reminders for the day> [me]
+        - - 123456 <remove task of id: 123456>
+
+# Twilio account with a single phone number to receive texts
+
+# design pattern: chain of responsiblity or visitor
+# cor: client > handler > class1/class2/class3
+
+# syntax
+
+! 
+Show all active reminders (with ID)
+
+! [<period>]
+List all reminders within the time period (with ID)
+
++ <time>[;<time2>] "<message>" <number>[;<number2>]
+Add a new reminder
+
+? help
+Show simple help instructions
+
+?
+Check that the service is running
+
+- <reminder>
+Remove the active reminder from the list (by ID)
