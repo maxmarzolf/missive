@@ -2,9 +2,9 @@ from flask import Flask, jsonify, request
 from twilio.twiml.messaging_response import MessagingResponse
 from pprint import pprint
 
-from . import reminders_bp
+from . import sms_bp
 
-@reminders_bp.route("/", methods=["GET", "POST"])
+@sms_bp.route("/", methods=["GET", "POST"])
 def home():
     #people = [{"name":"John", "id":"12333", "color":"Blue"}, {"name":"Brett", "id":"12345", "color":"Green"}]
 

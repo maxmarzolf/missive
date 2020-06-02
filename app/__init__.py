@@ -7,7 +7,7 @@ def create_app():
 
     with app.app_context():
 
-        from . import reminders
-        app.register_blueprint(reminders.reminders_bp)
+        from . import sms
+        app.register_blueprint(sms.sms_bp)
 
         return app

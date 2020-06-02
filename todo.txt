@@ -30,3 +30,27 @@ Check that the service is running
 
 - <reminder>
 Remove the active reminder from the list (by ID)
+
+
+Approach:
+classes
+    - top-level request
+        # meta information (to, from, msg, etc.; basically the info in the Twilio request)
+            - getters & setters
+        # have children inherit the basic information and extend for all other functionality (except a few, maybe?)
+    - (+) add reminder (inherits from request)
+        - import the parser
+        - methods for each action (might have to work out overloading methods)
+    - (?) information reminder (inherits from request)
+    - (-) remove reminder (inherits from request)
+    - (!) display reminder (inherits from request)
+    - top level parser
+        # various methods for extracting information from message bodies
+# request handler
+    # invokes +/-/? classes
+# error handler
+    # does Flask have enough of this functionality baked in? Is it better to handle errors within each module (probably)?
+# DB handler
+    # handles all the DB storage for incoming/outgoing messages, reminders, etc.
+# send message handler
+    # handles all of the sms messaging
