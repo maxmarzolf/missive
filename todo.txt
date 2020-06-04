@@ -19,7 +19,7 @@ Show all active reminders (with ID)
 ! [<period>]
 List all reminders within the time period (with ID)
 
-+ <time>[;<time2>] "<message>" <number>[;<number2>]
++ <@time>[<@time2>] "<message>" <#number>[;<#number2>]
 Add a new reminder
 
 ? help
