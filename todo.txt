@@ -1,4 +1,35 @@
 # Missive
+
+- Handle requests with multiple reminders
+    > throw any reminders after the first away automatically
+    > ask the user which reminder they would like to keep
+    > prompt the user if he/she would like to create multiple missives for each reminder (keeping the receivers and times)
+- Get all subclasses of the Parser written (with tests)
+    > !
+    > -
+    > ?
+- Write the logic for the handler for all actions (with tests)
+    > Maybe create a class for the Handler so it can be instantiated with each new request?
+
+Handler
+    > add, remove, info, etc.
+    > create classes for db interfacing, task scheduling, etc.
+        - subclass these for specific actions
+    > Flow:
+        1. Handler receives tasks
+        2. Handler calls and instance of Parser to determine pathway
+        3. Handler oversees the execution order of events for now
+        4. The handler stays ugly.
+
+DBHandler
+    > subclass for +, -, !, etc.
+Parser
+    > subclass for +, -, !, etc.
+Scheduler
+Messager
+
+
+
 # Flask app with an endpoint at /sms (or any other single endpoint) to handle Twilio texts
     > Handle incoming text messages:
         - + 1h Get cheese from Wegmans [123-123-1234;123-123-1235]

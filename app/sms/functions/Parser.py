@@ -14,7 +14,6 @@ class ParserInterface(ABC):
     def __repr__(self):
         pass
 
-
 class AddParser(ParserInterface):
     def __init__(self, msg_body):
         self.msg_body = msg_body
@@ -65,6 +64,53 @@ class AddParser(ParserInterface):
     def __repr__(self):
         return self.msg_body
 
-ap = AddParser('+ @12:00 @13:00 "Get coffee" "get beans" #1234567899')
-print(ap.msg_body)
-print(ap.elements)
+class RemoveParser(ParserInterface):
+    def __init__(self, sms_msg):
+        self.sms_msg = sms_msg
+        self.missive_id = self.parseMissiveID()
+        self.elements = []
+    
+    def getElements(self):
+        for m in self.missive_id:
+            self.elements.append(m.strip())
+        
+        return self.elements
+
+    def parseMissiveID(self):
+        message = re.findall(r'(\d+)', self.sms_msg)
+        print(message)
+
+        return message
+    
+    def __repr__(self):
+        return self.sms_msg
+
+class InfoParser(ParserInterface):
+    def __init__(self, sms_msg):
+        self.sms_msg = sms_msg
+        self.times = self.parseTimes()
+        self.elements = []
+    
+    def getElements(self):
+        for t in self.times:
+            self.elements.append(t)
+
+        return self.elements
+
+    def parseTimes(self):
+        times = []
+        split_times = re.findall(r'(@\d+:\d+\s*\w*)', self.sms_msg)
+
+        for t in split_times:
+            times.append(t.strip())
+
+        return times
+    
+    def __repr__(self):
+        return self.sms_msg
+
+class HelpParser(ParserInterface):
+    pass
+
+ip = InfoParser('! @12:30@13:30')
+print(ip.getElements())
