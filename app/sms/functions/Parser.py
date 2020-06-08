@@ -78,7 +78,6 @@ class RemoveParser(ParserInterface):
 
     def parseMissiveID(self):
         message = re.findall(r'(\d+)', self.sms_msg)
-        print(message)
 
         return message
     
@@ -112,5 +111,3 @@ class InfoParser(ParserInterface):
 class HelpParser(ParserInterface):
     pass
 
-ip = InfoParser('! @12:30@13:30')
-print(ip.getElements())

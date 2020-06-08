@@ -53,6 +53,19 @@ List all reminders within the time period (with ID)
 + <@time>[<@time2>] "<message>" <#number>[;<#number2>]
 Add a new reminder
 
++ @01-01-2020 12:30; "msg" <#number>[;][<#number2]
++ @01-01-2020|12:30@01-02-2020|12:00 "msg" #me
+Multiple times
++ @d|8:00 "work" #me
+Daily at 8:00
++ @w.|8:00 "work" #me
+Every wednesday at 8:00
+Jan. 1st 2020 at 12:30
++ @w 12:30
+Next Wednesday at 12:30 (non-repeating)
++ @w+ 12:30
+Every Wednesday at 12:30 (repeating)
+
 ? help
 Show simple help instructions
 
