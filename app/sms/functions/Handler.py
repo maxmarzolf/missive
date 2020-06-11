@@ -1,8 +1,9 @@
 import Parser
 
+
 def Handler(sms_message):
     if sms_message[0] == '+':
-        ap = Parser.AddParser(sms_message) #.getElements() which returns an object
+        ap = Parser.AddParser(sms_message)  # .getElements() which returns an object
         # DBHandler (to log the request)
         # Scheduler (to schedule the request)
         # MessageHandler (to communicate with the user)
@@ -16,6 +17,7 @@ def Handler(sms_message):
     elif sms_message[0] == '?':
         hp = Parser.HelpParser(sms_message)
     else:
-        print("other/unknown command") 
+        print("other/unknown command")
+
 
 Handler('+ @12:00 "something here" #1234121234')

@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 import re
 
+
 class ParserInterface(ABC):
     @staticmethod
     def __init__(self):
@@ -13,6 +14,7 @@ class ParserInterface(ABC):
     @staticmethod
     def __repr__(self):
         pass
+
 
 class AddParser(ParserInterface):
     def __init__(self, msg_body):
@@ -42,14 +44,14 @@ class AddParser(ParserInterface):
             times.append(t.strip())
 
         return times
-    
+
     def parseReceivers(self):
         receivers = []
         split_receivers = re.findall(r'(#\d+)', self.msg_body)
 
         for r in split_receivers:
             receivers.append(r.strip())
-        
+
         return receivers
 
     def parseReminder(self):
@@ -64,32 +66,34 @@ class AddParser(ParserInterface):
     def __repr__(self):
         return self.msg_body
 
+
 class RemoveParser(ParserInterface):
     def __init__(self, sms_msg):
         self.sms_msg = sms_msg
         self.missive_id = self.parseMissiveID()
         self.elements = []
-    
+
     def getElements(self):
         for m in self.missive_id:
             self.elements.append(m.strip())
-        
+
         return self.elements
 
     def parseMissiveID(self):
         message = re.findall(r'(\d+)', self.sms_msg)
 
         return message
-    
+
     def __repr__(self):
         return self.sms_msg
+
 
 class InfoParser(ParserInterface):
     def __init__(self, sms_msg):
         self.sms_msg = sms_msg
         self.times = self.parseTimes()
         self.elements = []
-    
+
     def getElements(self):
         for t in self.times:
             self.elements.append(t)
@@ -104,10 +108,10 @@ class InfoParser(ParserInterface):
             times.append(t.strip())
 
         return times
-    
+
     def __repr__(self):
         return self.sms_msg
 
+
 class HelpParser(ParserInterface):
     pass
-
